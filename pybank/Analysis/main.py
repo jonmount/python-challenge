@@ -5,15 +5,25 @@ import csv
 
 csvpath = os.path.join('..', 'Resources', 'budget_data.csv')
 
+
+
+
+total_months = 0 
+sum_profits = 0 
+
+
 with open(csvpath) as csvfile:
 
     csvreader = csv.reader(csvfile, delimiter=',')
+    
     print(csvreader)
 
+    next(csvreader)
+
     for row in csvreader : 
-        print(row)
 
-
+        total_months = total_months + 1 
+       
 
 
 
@@ -32,8 +42,8 @@ with open(csvpath) as csvfile:
 
 print("Financial Analysis")
 print("--------------------")
-print("Total Months =")
-print("Total : ")
+print(f"Total Months : {total_months}")
+print(f"Total : {sum_profits}")
 print("Average Change : ")
 print('Greatest Increaser in Profits :')
 print("Greatest Decrease in Profits : ")
