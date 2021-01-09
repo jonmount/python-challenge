@@ -16,7 +16,7 @@ previous = 0
 
 
 monthly_profits = []
-dates = []
+
 
 
 
