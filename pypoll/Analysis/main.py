@@ -16,6 +16,8 @@ candidate_dictionary = {}
 max_vote = 0 
 
 
+
+
 with open(csvpath) as csvfile:
 
     csvreader = csv.reader(csvfile, delimiter=',')
@@ -27,6 +29,7 @@ with open(csvpath) as csvfile:
     for row in csvreader : 
 
         total_votes = total_votes + 1
+    
 
         candidate = row[2]
 
@@ -45,15 +48,19 @@ with open(csvpath) as csvfile:
 
 
 
+with open("pypoll_output.txt", "w") as txt_file: 
+    txt_file.write("Election Results\n")
+    txt_file.write("-------------------------\n")
+    txt_file.write(f"Total Votes : {total_votes}\n")
+    txt_file.write("-------------------------\n")
 
-
-print("-------------------------")
-print(f'Total Votes: {total_votes}')
-print("-------------------------")
-for candidate, vote_count in candidate_dictionary.items() : 
+    print("-------------------------")
+    print(f'Total Votes: {total_votes}')
+    print("-------------------------")
+    for candidate, vote_count in candidate_dictionary.items() : 
         percent = float(candidate_dictionary[candidate]) / float(total_votes) 
         percent = round(percent * 100, 2)
-        print(f"{candidate} : {percent} % {vote_count}")
+        print(f"{candidate} : {percent} % {vote_count} \n")
 
         num_votes =candidate_dictionary[candidate] 
         winning_vote = candidate 
@@ -61,6 +68,14 @@ for candidate, vote_count in candidate_dictionary.items() :
         
             max_vote = num_votes 
             winner = candidate 
-print("-------------------------")
-print(f'Winner: {winner}')
-print("-------------------------")
+    print("-------------------------")
+    print(f'Winner: {winner}')
+    print("-------------------------")
+
+
+
+    for candidate, vote_count in candidate_dictionary.items() : 
+        txt_file.write(f"{candidate} : {percent} % {vote_count}\n")
+    txt_file.write("-------------------------\n")
+    txt_file.write(f'Winner: {winner}\n')
+    txt_file.write("-------------------------\n'")
