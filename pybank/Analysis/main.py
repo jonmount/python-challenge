@@ -17,6 +17,8 @@ previous = 0
 
 monthly_profits = []
 
+great_inc_date = []
+great_dec_date = []
 
 
 
@@ -45,6 +47,14 @@ with open(csvpath) as csvfile:
             monthly_profits.append(change)
 
             previous = int(row[1])
+
+         
+
+
+
+            
+
+
 
            
 
