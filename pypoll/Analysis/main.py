@@ -13,7 +13,7 @@ candidate_list = []
 
 candidate_dictionary = {}
 
-
+max_vote = 0 
 
 
 with open(csvpath) as csvfile:
@@ -40,6 +40,9 @@ with open(csvpath) as csvfile:
             candidate_dictionary[candidate] = 1
             
 
+  
+
+
 
 
 
@@ -48,7 +51,16 @@ print("-------------------------")
 print(f'Total Votes: {total_votes}')
 print("-------------------------")
 for candidate, vote_count in candidate_dictionary.items() : 
-    print(f"{candidate} + {vote_count}")
+        percent = float(candidate_dictionary[candidate]) / float(total_votes) 
+        percent = round(percent * 100, 2)
+        print(f"{candidate} : {percent} % {vote_count}")
+
+        num_votes =candidate_dictionary[candidate] 
+        winning_vote = candidate 
+        if num_votes >  max_vote  :
+        
+            max_vote = num_votes 
+            winner = candidate 
 print("-------------------------")
-print("Winner: ")
+print(f'Winner: {winner}')
 print("-------------------------")
