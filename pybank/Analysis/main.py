@@ -23,6 +23,10 @@ with open(csvpath) as csvfile:
     for row in csvreader : 
 
         total_months = total_months + 1 
+
+        sum_profits = sum_profits+ int(row[1])
+
+        
        
 
 
