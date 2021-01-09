@@ -60,7 +60,7 @@ print("Financial Analysis")
 print("--------------------")
 print(f"Total Months : {total_months}")
 print(f"Total : {sum_profits}")
-print(f"Average Change : {average}")
+print(f"Average Change : {round(average, 2)}")
 print(f'Greatest Increase in Profits : {great_prof_inc}')
 print(f'Greatest Decrease in Profits :  {great_prof_dec}')
 
@@ -71,7 +71,7 @@ with open("pybank_output.txt", "w") as txt_file:
     txt_file.write(f"Total Months : {total_months}\n")
     txt_file.write(f"Total : {sum_profits}\n")
     txt_file.write(f"Average Change : {average}\n")
-    txt_file.write(f'Greatest Increase in Profits : {great_prof_inc})\n')
+    txt_file.write(f'Greatest Increase in Profits : {great_prof_inc}\n')
     txt_file.write(f'Greatest Decrease in Profits :  {great_prof_dec}\n')
 
 
