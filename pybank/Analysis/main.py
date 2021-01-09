@@ -11,6 +11,15 @@ csvpath = os.path.join('..', 'Resources', 'budget_data.csv')
 total_months = 0 
 sum_profits = 0 
 
+change = 0 
+previous = 0 
+
+
+monthly_profits = []
+dates = []
+
+
+
 
 with open(csvpath) as csvfile:
 
@@ -27,27 +36,42 @@ with open(csvpath) as csvfile:
         sum_profits = sum_profits+ int(row[1])
 
         
+
        
+        if total_months > 1 : 
+            change = int(row[1]) - previous 
+            
+
+            monthly_profits.append(change)
+
+            previous = int(row[1])
+
+           
 
 
 
 
+average = sum(monthly_profits)/ (total_months - 1)
 
-
-
-
-
-
-
-
-
-
-
+great_prof_inc = max(monthly_profits)
+great_prof_dec = min(monthly_profits)
 
 print("Financial Analysis")
 print("--------------------")
 print(f"Total Months : {total_months}")
 print(f"Total : {sum_profits}")
-print("Average Change : ")
-print('Greatest Increaser in Profits :')
-print("Greatest Decrease in Profits : ")
+print(f"Average Change : {average}")
+print(f'Greatest Increase in Profits : {great_prof_inc}')
+print(f'Greatest Decrease in Profits :  {great_prof_dec}')
+
+
+with open("pybank_output.txt", "w") as txt_file: 
+    txt_file.write("Financial Analysis\n")
+    txt_file.write("--------------------\n")
+    txt_file.write(f"Total Months : {total_months}\n")
+    txt_file.write(f"Total : {sum_profits}\n")
+    txt_file.write(f"Average Change : {average}\n")
+    txt_file.write(f'Greatest Increase in Profits : {great_prof_inc})\n')
+    txt_file.write(f'Greatest Decrease in Profits :  {great_prof_dec}\n')
+
+
